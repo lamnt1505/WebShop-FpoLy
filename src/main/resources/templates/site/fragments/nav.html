@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+
+  </head>
+  <body>
+        <div th:fragment="nav">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light">
+                <a class="navbar-brand" href="#">TECH POLYSHOP</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" th:href="@{/site/listProducts}"><i class="fas fa-store"></i> Product</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" th:href="@{/site/shopping-cart/view}"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" th:href="@{/site/ordersSite/views}"><i class="fab fa-amazon-pay"></i> My Order</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user" aria-hidden="true"></i>  My Profile</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownId">
+                          <a class="dropdown-item" th:href="@{/slogin}">Login</a>
+                          <a class="dropdown-item" th:href="@{/customers/forgotPass}">Forgot Password</a>
+                          <a class="dropdown-item" th:href="@{/customers/registered}">Registration</a>
+                          <a class="dropdown-item" th:href="@{/logoff}">Logoff</a>
+                          <a class="dropdown-item" href="#">Change Password</a>
+                          <a class="dropdown-item" th:href="@{/site/updateProfile/view}" >Edit Profile</a>
+                      </div>
+                  </li>
+                    
+                  </ul>
+                </div>
+                <i th:text="${'Hello ' + session.username + '!'}"></i>
+              </nav>
+        </div>
+  </body>
+</html>

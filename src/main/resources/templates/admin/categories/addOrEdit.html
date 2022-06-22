@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{admin/dashboardLayout.html}">
+   
+    <head>
+
+    </head>
+
+    <body>
+          
+        <section class="row" layout:fragment="content">
+            <div class="col-6 offset-3 mt-4">
+                <form th:action="@{/admin/categories/saveOrUpdate}" method="post" th:object="${category}">
+                    <div class="card">
+                        <div class="card-header" style="background-color:  rgb(156, 191, 208);text-align: center;">
+                            <h3>ADD NEW CATEGORY</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="categoryId">Category ID</label>
+                                <!--Nhận diện khi nào edit khi nào add-->
+                                <input type="hidden" th:field="*{isEdit}"> 
+                                <input type="number" class="form-control" th:field="*{categoryId}"
+                                    aria-describedby="categoryIdHelpId" placeholder="CategoryID" readonly>
+                                <small th:if="${#fields.hasErrors('categoryId')}"
+                                id="categoryIdHelpId" class="form-text text-muted">Category Id is required or invalid</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" th:field="*{name}" id="name"
+                                    aria-describedby="nameHelpId" placeholder="Name">
+                                <small th:if="${#fields.hasErrors('name')}"
+                                    id="nameHelpId" class="form-text text-muted">Name is required or invalid</small> 
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted" style="background-color: white;text-align: center;">
+                            <button class="btn btn-outline-primary"> 
+                                <span th:if="${category.isEdit}"><i class="fas fa-redo"></i> Update</span>
+                                <span th:unless="${category.isEdit}"><i class="fa fa-save"></i> Save</span>
+                            </button>
+                            <a th:href="@{/admin/categories/searchPaginated}" class="btn btn-outline-success"><i class="fa fa-list"></i> List Categories</a>
+                            <button class="btn btn-outline-secondary"><i class="fas fa-undo"></i> Reset</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+           
+    </body>
+
+</html>

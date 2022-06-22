@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+
+  </head>
+  <body>
+        <div th:fragment="nav">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light">
+                <a class="navbar-brand" href="#">TECH POLYSHOP</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <!-- <li class="nav-item ">
+                      <a class="nav-link" href="#"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li class="nav-item ">
+                      <a class="nav-link" th:href="@{/admin/customers/searchPaginated}"><i class="fas fa-user-lock"></i> Manage Customer</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" th:href="@{/admin/categories/searchPaginated}"><i class="fas fa-list"></i> Manage Category</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" th:href="@{/admin/products/searchPaginated}"><i class="fas fa-store"></i> Manage Product</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" th:href="@{/admin/orders/searchPaginated}"><i class="fab fa-jedi-order"></i> Manage Order</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link" th:href="@{/admin/accounts/searchPaginated}"><i class="fas fa-user-edit"></i> Manage Account</a>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-edit"></i> Manage Account</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownId">
+                          <a class="dropdown-item" th:href="@{/alogin}">Login</a>
+                          <a class="dropdown-item" th:href="@{/admin/accounts/searchPaginated}">List of accounts</a>
+                          <a class="dropdown-item" th:href="@{/alogoff}">Logoff</a>
+                          <a class="dropdown-item" href="#">Change Password</a>
+                          <a class="dropdown-item" href="#">Edit Profile</a>
+                      </div>
+                  </li>
+                  </ul>
+              
+                </div>
+                  <i th:text="${'Hello ' + session.admin + '!'}"></i>
+              </nav>
+        </div>
+  </body>
+</html>
